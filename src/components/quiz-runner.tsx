@@ -78,9 +78,9 @@ export function QuizRunner({ quiz }: { quiz: Quiz }) {
                         !isSubmitted && isPicked && "border-primary bg-primary/5",
                         isSubmitted && isCorrect && "border-success bg-success/10",
                         isSubmitted &&
-                          !isCorrect &&
-                          isPicked &&
-                          "border-destructive bg-destructive/10",
+                        !isCorrect &&
+                        isPicked &&
+                        "border-destructive bg-destructive/10",
                         isSubmitted && !isCorrect && !isPicked && "opacity-60"
                       )}
                     >
@@ -91,12 +91,12 @@ export function QuizRunner({ quiz }: { quiz: Quiz }) {
                             !isSubmitted && isPicked && "border-primary text-primary",
                             !isSubmitted && !isPicked && "border-border text-muted-foreground",
                             isSubmitted &&
-                              isCorrect &&
-                              "border-success bg-success text-background",
+                            isCorrect &&
+                            "border-success bg-success text-background",
                             isSubmitted &&
-                              !isCorrect &&
-                              isPicked &&
-                              "border-destructive bg-destructive text-white"
+                            !isCorrect &&
+                            isPicked &&
+                            "border-destructive bg-destructive text-white"
                           )}
                         >
                           {opt.id.toUpperCase()}
@@ -146,8 +146,8 @@ export function QuizRunner({ quiz }: { quiz: Quiz }) {
               {score === total
                 ? "Clean sweep. You've internalized the playbook."
                 : score >= total * 0.7
-                ? "Solid. Re-read the explanations on the misses and you're set."
-                : "Worth a re-pass through the curriculum before relying on this in production."}
+                  ? "Solid. Re-read the explanations on the misses and you're set."
+                  : "Worth a re-pass through the curriculum before relying on this in production."}
             </div>
           </CardContent>
         </Card>

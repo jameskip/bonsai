@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DesignDiagram } from "@/components/design-diagram";
+import { MermaidDiagram } from "@/components/mermaid-diagram";
 import { designs, getDesign } from "@/content/system-designs";
 
 export function generateStaticParams() {
@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const d = getDesign(slug);
   if (!d) return {};
-  return { title: `${d.title} · qa4ai`, description: d.tagline };
+  return { title: `${d.title} · Bonsai`, description: d.tagline };
 }
 
 export default async function DesignPage({
@@ -88,7 +88,7 @@ export default async function DesignPage({
 
         <div>
           <h2>Architecture</h2>
-          <DesignDiagram nodes={d.nodes} edges={d.edges} />
+          <MermaidDiagram nodes={d.nodes} edges={d.edges} />
         </div>
 
         <div>

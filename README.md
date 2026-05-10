@@ -1,6 +1,6 @@
-# qa4ai
+# Bonsai
 
-QA for the AI age — a Next.js teaching app covering evals, LLM-as-judge, RAG and agent
+Cultivate AI you can trust — a Next.js teaching app covering evals, LLM-as-judge, RAG and agent
 testing, red-teaming, drift detection, system designs, and the frontier of AI quality.
 
 ## Stack

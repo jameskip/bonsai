@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { ApiKeyManager } from "@/components/api-key-manager";
 import type { Lab } from "@/content/labs";
 
 export function LabShell({
@@ -44,6 +45,11 @@ export function LabShell({
             ))}
           </ul>
         </div>
+        {lab.requiresApiKey && (
+          <div className="mt-4">
+            <ApiKeyManager variant="compact" />
+          </div>
+        )}
       </header>
       {children}
     </div>

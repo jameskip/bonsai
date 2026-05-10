@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { getAnthropic, QA4AI_MODEL } from "@/lib/anthropic";
+import {
+  getAnthropicClient,
+  readClientApiKey,
+  BONSAI_MODEL,
+} from "@/lib/anthropic";
 
 export const runtime = "nodejs";
 
@@ -70,13 +74,13 @@ export async function POST(req: Request) {
 
   const client = (() => {
     try {
-      return getAnthropic();
+      return getAnthropicClient(readClientApiKey(req));
     } catch (e) {
       return e as Error;
     }
   })();
   if (client instanceof Error) {
-    return NextResponse.json({ error: client.message }, { status: 500 });
+    return NextResponse.json({ error: client.message }, { status: 401 });
   }
 
   const userContent = [
@@ -91,7 +95,7 @@ export async function POST(req: Request) {
 
   try {
     const response = await client.messages.create({
-      model: QA4AI_MODEL,
+      model: BONSAI_MODEL,
       max_tokens: 4096,
       thinking: { type: "adaptive" },
       output_config: {
@@ -144,7 +148,10 @@ export async function POST(req: Request) {
   } catch (e) {
     if (e instanceof Anthropic.AuthenticationError) {
       return NextResponse.json(
-        { error: "Anthropic auth failed. Check ANTHROPIC_API_KEY." },
+        {
+          error:
+            "Anthropic authentication failed. Check that your API key is valid (you can update it on the Labs page).",
+        },
         { status: 401 }
       );
     }

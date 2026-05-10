@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const q = getQuiz(slug);
   if (!q) return {};
-  return { title: `${q.title} · qa4ai`, description: q.tagline };
+  return { title: `${q.title} · Bonsai`, description: q.tagline };
 }
 
 export default async function QuizPage({

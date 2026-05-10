@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { getLesson, lessons } from "@/content/curriculum";
 import { getDesign } from "@/content/system-designs";
 import { getLab } from "@/content/labs";
+import { LessonStepper } from "@/components/lesson-stepper";
+import { ReferenceList } from "@/components/reference-list";
 
 export function generateStaticParams() {
   return lessons.map((l) => ({ slug: l.slug }));
@@ -21,14 +23,14 @@ export async function generateMetadata({
   const lesson = getLesson(slug);
   if (!lesson) return {};
   return {
-    title: `${lesson.title} · qa4ai`,
+    title: `${lesson.title} · Bonsai`,
     description: lesson.tagline,
   };
 }
 
 function renderInline(text: string) {
   const parts: (string | { code?: string; bold?: string })[] = [];
-  let rest = text;
+  const rest = text;
   const re = /`([^`]+)`|\*\*([^*]+)\*\*/g;
   let last = 0;
   for (const match of rest.matchAll(re)) {
@@ -62,10 +64,26 @@ export default async function LessonPage({
 
   const relatedLabs = (lesson.relatedLabs ?? [])
     .map((s) => getLab(s))
-    .filter(Boolean);
+    .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    .map((l) => ({ slug: l.slug, title: l.title }));
   const relatedDesigns = (lesson.relatedDesigns ?? [])
     .map((s) => getDesign(s))
-    .filter(Boolean);
+    .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    .map((d) => ({ slug: d.slug, title: d.title, tagline: d.tagline }));
+
+  if (lesson.blocks && lesson.blocks.length > 0) {
+    return (
+      <LessonStepper
+        lesson={lesson}
+        prevSlug={prev?.slug}
+        prevTitle={prev?.title}
+        nextSlug={next?.slug}
+        nextTitle={next?.title}
+        relatedLabs={relatedLabs}
+        relatedDesigns={relatedDesigns}
+      />
+    );
+  }
 
   return (
     <article className="mx-auto max-w-3xl px-4 md:px-6 py-12 md:py-16">
@@ -85,6 +103,11 @@ export default async function LessonPage({
               {t}
             </Badge>
           ))}
+          {lesson.references && lesson.references.length > 0 && (
+            <span className="text-[10px] rounded-full border border-border bg-muted/40 px-2 py-0.5 text-muted-foreground">
+              {lesson.references.length} refs
+            </span>
+          )}
         </div>
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground leading-tight">
           {lesson.title}
@@ -97,7 +120,7 @@ export default async function LessonPage({
       <div className="prose-qa">
         <p className="text-foreground/95 text-base leading-relaxed">{lesson.intro}</p>
 
-        {lesson.sections.map((s) => (
+        {(lesson.sections ?? []).map((s) => (
           <div key={s.heading}>
             <h2>{s.heading}</h2>
             <p>{renderInline(s.body)}</p>
@@ -112,6 +135,18 @@ export default async function LessonPage({
         </ul>
       </div>
 
+      {lesson.references && lesson.references.length > 0 && (
+        <>
+          <Separator className="my-10" />
+          <div>
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground mb-4">
+              References & further reading
+            </h2>
+            <ReferenceList references={lesson.references} />
+          </div>
+        </>
+      )}
+
       {(relatedLabs.length > 0 || relatedDesigns.length > 0) && (
         <>
           <Separator className="my-10" />
@@ -122,18 +157,15 @@ export default async function LessonPage({
                   Try the lab
                 </h3>
                 <div className="space-y-2">
-                  {relatedLabs.map((lab) =>
-                    lab ? (
-                      <Link key={lab.slug} href={`/labs/${lab.slug}`} className="group">
-                        <Card className="transition-all group-hover:border-primary/50">
-                          <CardHeader>
-                            <CardTitle className="text-base">{lab.title}</CardTitle>
-                            <CardDescription>{lab.tagline}</CardDescription>
-                          </CardHeader>
-                        </Card>
-                      </Link>
-                    ) : null
-                  )}
+                  {relatedLabs.map((lab) => (
+                    <Link key={lab.slug} href={`/labs/${lab.slug}`} className="group">
+                      <Card className="transition-all group-hover:border-primary/50">
+                        <CardHeader>
+                          <CardTitle className="text-base">{lab.title}</CardTitle>
+                        </CardHeader>
+                      </Card>
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
@@ -143,22 +175,20 @@ export default async function LessonPage({
                   See the design
                 </h3>
                 <div className="space-y-2">
-                  {relatedDesigns.map((d) =>
-                    d ? (
-                      <Link
-                        key={d.slug}
-                        href={`/system-designs/${d.slug}`}
-                        className="group"
-                      >
-                        <Card className="transition-all group-hover:border-primary/50">
-                          <CardHeader>
-                            <CardTitle className="text-base">{d.title}</CardTitle>
-                            <CardDescription>{d.tagline}</CardDescription>
-                          </CardHeader>
-                        </Card>
-                      </Link>
-                    ) : null
-                  )}
+                  {relatedDesigns.map((d) => (
+                    <Link
+                      key={d.slug}
+                      href={`/system-designs/${d.slug}`}
+                      className="group"
+                    >
+                      <Card className="transition-all group-hover:border-primary/50">
+                        <CardHeader>
+                          <CardTitle className="text-base">{d.title}</CardTitle>
+                          <CardDescription>{d.tagline}</CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}

@@ -1,17 +1,20 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-let cached: Anthropic | null = null;
+export const BONSAI_MODEL = "claude-opus-4-7";
 
-export function getAnthropic(): Anthropic {
-  if (cached) return cached;
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
+const BYOK_HEADER = "x-anthropic-key";
+
+export function getAnthropicClient(apiKey?: string): Anthropic {
+  const key = apiKey ?? process.env.ANTHROPIC_API_KEY;
+  if (!key) {
     throw new Error(
-      "Missing ANTHROPIC_API_KEY. Set it in .env.local before calling Anthropic-backed labs."
+      "No Anthropic API key. Add one on the Labs page (stored only in your browser), or set ANTHROPIC_API_KEY in your server environment."
     );
   }
-  cached = new Anthropic({ apiKey });
-  return cached;
+  return new Anthropic({ apiKey: key });
 }
 
-export const QA4AI_MODEL = "claude-opus-4-7";
+export function readClientApiKey(req: Request): string | undefined {
+  const v = req.headers.get(BYOK_HEADER);
+  return v && v.trim().length > 0 ? v.trim() : undefined;
+}

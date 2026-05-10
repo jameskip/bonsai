@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { UsageStrip, type UsageInfo } from "@/components/usage-strip";
+import { apiKeyHeader } from "@/lib/api-key";
 
 type Criterion = { id: string; description: string };
 
@@ -48,7 +49,7 @@ export function LlmAsJudgeLab() {
     try {
       const res = await fetch("/api/anthropic/generate", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...apiKeyHeader() },
         body: JSON.stringify({ prompt, style }),
       });
       const data = await res.json();
@@ -68,7 +69,7 @@ export function LlmAsJudgeLab() {
     try {
       const res = await fetch("/api/anthropic/judge", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...apiKeyHeader() },
         body: JSON.stringify({
           candidate,
           context: `User prompt: ${prompt}`,

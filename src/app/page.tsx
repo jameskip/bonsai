@@ -75,15 +75,12 @@ export default function Home() {
         <div className="absolute inset-0 grid-bg pointer-events-none" />
         <div className="relative mx-auto max-w-6xl px-4 md:px-6 py-20 md:py-28">
           <div className="flex flex-col items-start gap-6 max-w-3xl animate-fade-up">
-            <Badge variant="outline" className="rounded-full">
-              QA for the AI age · 2026 edition
-            </Badge>
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-foreground">
               Quality assurance, <br />
               for systems that <span className="gradient-text">don&apos;t repeat themselves</span>.
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              qa4ai teaches you to test AI systems the way the frontier actually does it:
+              Bonsai teaches you to test AI systems the way the frontier actually does it:
               evals as datasets, LLM-as-judge with calibration, RAG and agent harnesses,
               red-teaming, drift detection, and CI/CD that respects statistical noise.
             </p>

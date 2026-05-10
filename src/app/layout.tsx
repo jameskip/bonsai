@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "qa4ai · QA for the AI age",
+  title: "Bonsai · Cultivate AI you can trust",
   description:
     "Learn QA for AI: evals, LLM-as-judge, RAG and agent testing, red-teaming, drift, system designs, and the frontier of AI quality.",
 };

@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const lab = getLab(slug);
   if (!lab) return {};
-  return { title: `${lab.title} · qa4ai`, description: lab.tagline };
+  return { title: `${lab.title} · Bonsai`, description: lab.tagline };
 }
 
 export default async function LabPage({
