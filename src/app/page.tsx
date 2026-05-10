@@ -86,13 +86,13 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild size="lg">
-                <Link href="/curriculum/what-is-qa-for-ai">Start the curriculum</Link>
+                <Link href="/curriculum">Start the curriculum</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/labs/llm-as-judge">Try a live lab</Link>
+                <Link href="/labs">Try a live lab</Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
-                <Link href="/system-designs/eval-pipeline">See the system designs</Link>
+                <Link href="/system-designs">See the system designs</Link>
               </Button>
             </div>
           </div>

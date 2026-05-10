@@ -15,10 +15,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
+const title = "Bonsai · Cultivate AI you can trust";
+const description =
+  "Learn QA for AI: evals, LLM-as-judge, RAG and agent testing, red-teaming, drift, system designs, and the frontier of AI quality.";
+
 export const metadata: Metadata = {
-  title: "Bonsai · Cultivate AI you can trust",
-  description:
-    "Learn QA for AI: evals, LLM-as-judge, RAG and agent testing, red-teaming, drift, system designs, and the frontier of AI quality.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  applicationName: "Bonsai",
+  keywords: [
+    "AI quality assurance",
+    "LLM evals",
+    "LLM-as-judge",
+    "RAG testing",
+    "agent testing",
+    "red-teaming",
+    "drift detection",
+    "AI observability",
+  ],
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Bonsai",
+    title,
+    description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
