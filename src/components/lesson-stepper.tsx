@@ -35,8 +35,7 @@ export function LessonStepper({
   const blocks = lesson.blocks ?? [];
   const references = lesson.references ?? [];
   const hasRefs = references.length > 0;
-  const refsStepIndex = hasRefs ? blocks.length : -1;
-  const summaryStepIndex = blocks.length + (hasRefs ? 1 : 0);
+  const summaryStepIndex = blocks.length;
   const total = summaryStepIndex + 1;
   const [step, setStep] = useState(0);
   const [completed, setCompleted] = useState<Record<number, boolean>>({});
@@ -50,9 +49,8 @@ export function LessonStepper({
     setCompleted((c) => (c[idx] ? c : { ...c, [idx]: true }));
   }
 
-  const onRefs = hasRefs && step === refsStepIndex;
   const onSummary = step === summaryStepIndex;
-  const onBlock = !onRefs && !onSummary;
+  const onBlock = !onSummary;
   const currentBlock = onBlock ? blocks[step] : null;
   const isCompleted = onBlock && !!completed[step];
   const isSkippable =
@@ -80,7 +78,7 @@ export function LessonStepper({
           {hasRefs && (
             <button
               type="button"
-              onClick={() => setStep(refsStepIndex)}
+              onClick={() => setStep(summaryStepIndex)}
               className="text-[10px] rounded-full border border-border bg-muted/40 px-2 py-0.5 text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
               title="Jump to references"
             >
@@ -125,9 +123,7 @@ export function LessonStepper({
 
       <div className="text-xs text-muted-foreground font-mono mb-6">
         {onSummary
-          ? `Summary · ${total} of ${total}`
-          : onRefs
-          ? `References · ${step + 1} of ${total}`
+          ? `Wrap-up · ${total} of ${total}`
           : `Step ${step + 1} of ${total}`}
       </div>
 
@@ -138,27 +134,12 @@ export function LessonStepper({
             block={currentBlock}
             onComplete={() => markComplete(step)}
             refsCount={hasRefs ? references.length : 0}
-            onJumpToRefs={hasRefs ? () => setStep(refsStepIndex) : undefined}
+            onJumpToRefs={hasRefs ? () => setStep(summaryStepIndex) : undefined}
           />
         )}
 
-        {onRefs && (
-          <div className="space-y-5">
-            <div>
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground">
-                References & further reading
-              </h2>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                Primary sources behind this lesson — papers, official docs, frameworks, and
-                field write-ups. Use these to go deeper or to cite when sharing.
-              </p>
-            </div>
-            <ReferenceList references={references} />
-          </div>
-        )}
-
         {onSummary && (
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
               <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground mb-3">
                 Key takeaways
@@ -178,9 +159,9 @@ export function LessonStepper({
 
             {hasRefs && (
               <div>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
-                  Further reading
-                </div>
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground mb-3">
+                  References
+                </h2>
                 <ReferenceList references={references} />
               </div>
             )}
