@@ -95,7 +95,7 @@ export default async function LessonPage({
       </Link>
 
       <header className="mt-6 mb-10">
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex flex-wrap items-center gap-2 mb-4">
           <Badge variant="default">{lesson.level}</Badge>
           <span className="text-xs text-muted-foreground">~{lesson.estMinutes} min read</span>
           {lesson.topics.map((t) => (

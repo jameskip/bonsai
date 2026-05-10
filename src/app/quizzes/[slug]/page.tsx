@@ -34,7 +34,7 @@ export default async function QuizPage({
         ← Quizzes
       </Link>
       <header className="mt-6 mb-10">
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex flex-wrap items-center gap-2 mb-2">
           <Badge variant="default">{q.level}</Badge>
           <span className="text-xs text-muted-foreground">
             {q.questions.length} questions · ~{q.estMinutes} min

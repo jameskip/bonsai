@@ -24,7 +24,7 @@ export default function SystemDesignsIndex() {
           <Link key={d.slug} href={`/system-designs/${d.slug}`} className="group">
             <Card className="h-full transition-all group-hover:border-primary/50 group-hover:translate-y-[-2px]">
               <CardHeader>
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
                   <Badge variant="secondary" className="text-[10px]">
                     {d.nodes.length} components
                   </Badge>

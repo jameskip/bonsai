@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteNav } from "@/components/site-nav";
@@ -26,6 +26,12 @@ const siteUrl =
 const title = "Bonsai · Cultivate AI you can trust";
 const description =
   "Learn QA for AI: evals, LLM-as-judge, RAG and agent testing, red-teaming, drift, system designs, and the frontier of AI quality.";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

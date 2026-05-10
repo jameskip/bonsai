@@ -53,7 +53,7 @@ export default function CurriculumIndex() {
                   >
                     <Card className="h-full transition-all group-hover:border-primary/50 group-hover:translate-y-[-2px]">
                       <CardHeader>
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
                           <span className="text-xs text-muted-foreground">
                             ~{lesson.estMinutes} min
                           </span>
