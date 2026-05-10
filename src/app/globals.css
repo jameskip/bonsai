@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #08090b;
+  --color-foreground: #ededf0;
+  --color-muted: #15171b;
+  --color-muted-foreground: #9aa1ac;
+  --color-card: #0d0f12;
+  --color-card-foreground: #ededf0;
+  --color-border: #1c1f25;
+  --color-input: #1c1f25;
+  --color-ring: #c98a48;
+  --color-primary: #d4a373;
+  --color-primary-foreground: #08090b;
+  --color-accent: #1c1f25;
+  --color-accent-foreground: #ededf0;
+  --color-destructive: #ef4444;
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: 0.375rem;
+  --radius: 0.625rem;
+  --radius-lg: 0.875rem;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-primary) 35%, transparent);
+  color: var(--color-foreground);
+}
+
+.prose-qa h1,
+.prose-qa h2,
+.prose-qa h3 {
+  color: var(--color-foreground);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.prose-qa h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-qa h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-qa p,
+.prose-qa li {
+  color: var(--color-muted-foreground);
+  line-height: 1.7;
+}
+
+.prose-qa p {
+  margin-bottom: 1rem;
+}
+
+.prose-qa ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-qa ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-qa code {
+  background: var(--color-muted);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--color-foreground);
+}
+
+.prose-qa pre {
+  background: #0a0c10;
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  border-radius: 0.625rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+.prose-qa pre code {
+  background: transparent;
+  padding: 0;
+  color: #d4d4d8;
+}
+
+.prose-qa a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.prose-qa a:hover {
+  text-decoration-color: var(--color-primary);
+}
+
+.prose-qa blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1rem;
+  color: var(--color-muted-foreground);
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #d4a373 0%, #b08968 50%, #f4a261 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(212, 163, 115, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 163, 115, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
