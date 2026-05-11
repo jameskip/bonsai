@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 export const STORAGE_KEY = "bonsai.anthropic_api_key";
 export const HEADER_NAME = "x-anthropic-key";
@@ -24,19 +24,31 @@ export function maskApiKey(key: string): string {
   return `${key.slice(0, 7)}…${key.slice(-4)}`;
 }
 
-export function useApiKey() {
-  const [apiKey, setApiKeyState] = useState<string | null>(null);
-  const [hydrated, setHydrated] = useState(false);
+function subscribeStorage(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+}
 
-  useEffect(() => {
-    setApiKeyState(getStoredApiKey());
-    setHydrated(true);
-    function onStorage(e: StorageEvent) {
-      if (e.key === STORAGE_KEY) setApiKeyState(e.newValue);
-    }
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+function noopSubscribe() {
+  return () => {};
+}
+
+const trueOnClient = () => true;
+const falseOnServer = () => false;
+const nullOnServer = () => null;
+
+export function useApiKey() {
+  const apiKey = useSyncExternalStore(
+    subscribeStorage,
+    getStoredApiKey,
+    nullOnServer
+  );
+  const hydrated = useSyncExternalStore(
+    noopSubscribe,
+    trueOnClient,
+    falseOnServer
+  );
 
   const setApiKey = useCallback((key: string | null) => {
     if (typeof window === "undefined") return;
@@ -49,7 +61,11 @@ export function useApiKey() {
     } catch {
       /* quota or privacy mode — silently ignore */
     }
-    setApiKeyState(key);
+    // localStorage.setItem fires storage events only in *other* tabs.
+    // Dispatch a synthetic event so this tab's subscribers re-read.
+    window.dispatchEvent(
+      new StorageEvent("storage", { key: STORAGE_KEY, newValue: key })
+    );
   }, []);
 
   return { apiKey, setApiKey, hydrated };

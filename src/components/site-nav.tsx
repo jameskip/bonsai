@@ -17,10 +17,12 @@ const links = [
 export function SiteNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lastPathname, setLastPathname] = useState(pathname);
 
-  useEffect(() => {
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!menuOpen) return;

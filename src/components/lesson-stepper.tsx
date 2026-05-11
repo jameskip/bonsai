@@ -13,6 +13,7 @@ import { SliderBlock } from "@/components/lesson-blocks/slider-block";
 import { SortBinsBlock } from "@/components/lesson-blocks/sort-bins-block";
 import { PairwiseBlock } from "@/components/lesson-blocks/pairwise-block";
 import { RevealBlock } from "@/components/lesson-blocks/reveal-block";
+import { CodeBlock } from "@/components/lesson-blocks/code-block";
 import { ReferenceList } from "@/components/reference-list";
 
 export function LessonStepper({
@@ -54,7 +55,11 @@ export function LessonStepper({
   const currentBlock = onBlock ? blocks[step] : null;
   const isCompleted = onBlock && !!completed[step];
   const isSkippable =
-    onBlock && currentBlock && currentBlock.kind !== "prose" && !isCompleted;
+    onBlock &&
+    currentBlock &&
+    currentBlock.kind !== "prose" &&
+    currentBlock.kind !== "code" &&
+    !isCompleted;
 
   return (
     <div className="mx-auto max-w-3xl px-4 md:px-6 py-12 md:py-16">
@@ -330,6 +335,16 @@ function BlockRenderer({
           cta={block.cta}
           hidden={block.hidden}
           onComplete={onComplete}
+        />
+      );
+    case "code":
+      return (
+        <CodeBlock
+          heading={block.heading}
+          intro={block.intro}
+          language={block.language}
+          body={block.body}
+          caption={block.caption}
         />
       );
   }
