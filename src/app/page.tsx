@@ -18,7 +18,7 @@ const pillars = [
     title: "Curriculum",
     href: "/curriculum",
     blurb:
-      "Lessons that take you from 'what even is an eval' to long-horizon agent testing. Built for engineers, not marketers.",
+      "Lessons that take root: from your first eval set to agent harnesses that survive contact with production. Built for engineers shipping AI, not marketing decks reading about it.",
     count: lessons.length,
     label: "lessons",
   },
@@ -26,7 +26,7 @@ const pillars = [
     title: "Interactive Labs",
     href: "/labs",
     blurb:
-      "Hands-on exercises wired to live Claude calls: build judges, score groundedness, attempt prompt injection, see the bias.",
+      "Hands-on exercises wired to live Claude calls. Build a judge, score groundedness claim-by-claim, run prompt injections, and watch verbosity bias appear in real time.",
     count: labs.length,
     label: "labs",
   },
@@ -34,7 +34,7 @@ const pillars = [
     title: "System Designs",
     href: "/system-designs",
     blurb:
-      "Production-grade architectures for eval pipelines, RAG harnesses, agent harnesses, observability, and CI/CD.",
+      "Reference architectures for eval pipelines, RAG harnesses, agent harnesses, observability, and CI/CD that gates on statistics, not green checkmarks.",
     count: designs.length,
     label: "designs",
   },
@@ -42,7 +42,7 @@ const pillars = [
     title: "Quizzes",
     href: "/quizzes",
     blurb:
-      "Scenario quizzes that test whether you'd make the right call when an eval moves 3 points or a judge agrees with you 42% of the time.",
+      "Scenario quizzes that test whether you'd make the right call when an eval moves 3 points or your judge agrees with humans only 42% of the time.",
     count: quizzes.length,
     label: "modules",
   },
@@ -55,15 +55,15 @@ const principles = [
   },
   {
     title: "Trace everything",
-    body: "What the model thought, which tool it picked, what it retrieved, what it returned. Outcomes alone don't tell you why something broke.",
+    body: "What the model thought, which tool it picked, what it retrieved, what it returned. Outcomes alone don't tell you why a branch broke.",
   },
   {
     title: "Loop production back to evals",
-    body: "Every shipped failure is a permanent regression test. Triage queues are how the eval set actually gets good.",
+    body: "Every shipped failure is a permanent regression test. Your triage queue is the only way the eval set actually gets good.",
   },
   {
     title: "Respect your judges",
-    body: "LLM-as-judge is the most cost-effective scoring tool — and the most common source of false confidence. Calibrate against humans.",
+    body: "LLM-as-judge is the most cost-effective scoring tool you have — and the most common source of false confidence. Calibrate against humans, or you're grading your own homework.",
   },
 ];
 
@@ -76,17 +76,18 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-4 md:px-6 py-20 md:py-28">
           <div className="flex flex-col items-start gap-6 max-w-3xl animate-fade-up">
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-foreground">
-              Quality assurance, <br />
-              for systems that <span className="gradient-text">don&apos;t repeat themselves</span>.
+              Cultivate AI <br />
+              <span className="gradient-text">you can trust</span>.
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Bonsai teaches you to test AI systems the way the frontier actually does it:
-              evals as datasets, LLM-as-judge with calibration, RAG and agent harnesses,
-              red-teaming, drift detection, and CI/CD that respects statistical noise.
+              AI systems don&apos;t pass or fail — they perform within distributions. Bonsai
+              teaches you to measure those distributions, calibrate the judges that score
+              them, trace what your model actually does, and prune releases on signal you can
+              defend in a postmortem.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild size="lg">
-                <Link href="/curriculum">Start the curriculum</Link>
+                <Link href="/curriculum">Start cultivating</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/labs">Try a live lab</Link>
@@ -107,7 +108,7 @@ export default function Home() {
               Four ways in
             </h2>
             <p className="text-muted-foreground mt-1">
-              Read it, run it, design it, prove it.
+              Read, run, design, defend.
             </p>
           </div>
         </div>
@@ -145,8 +146,8 @@ export default function Home() {
               The four principles
             </h2>
             <p className="text-muted-foreground mt-1 max-w-2xl">
-              Every lesson, lab, and design on this site reduces to one of these. Internalize
-              them and the rest is technique.
+              Every lesson, lab, and design reduces to one of these. Internalize them — the
+              rest is technique, wire, and patience.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -174,10 +175,10 @@ export default function Home() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
-              Featured lessons
+              Start where you are
             </h2>
             <p className="text-muted-foreground mt-1">
-              Start anywhere. Each lesson stands alone.
+              Every lesson stands alone. Pick the one that fits the tree you&apos;re shaping.
             </p>
           </div>
           <Button asChild variant="ghost" size="sm">
