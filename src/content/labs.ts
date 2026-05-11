@@ -70,6 +70,36 @@ export const labs: Lab[] = [
     ],
     requiresApiKey: true,
   },
+  {
+    slug: "pairwise-bias",
+    title: "Pairwise & positional bias",
+    tagline: "Same content, swapped order — watch the judge change its mind.",
+    estMinutes: 10,
+    level: "Intermediate",
+    description:
+      "Two candidate responses (A and B), a pairwise judge that picks a winner, and a battery that runs both orderings. The lab reports A/B win counts and the positional gap — how often the first-shown candidate wins regardless of content.",
+    learningObjectives: [
+      "Recognize positional bias as a distinct failure mode of pairwise judges.",
+      "Use order-swapped batteries to separate content quality from position effects.",
+      "Decide when pairwise scoring is appropriate vs. rubric-based scoring.",
+    ],
+    requiresApiKey: true,
+  },
+  {
+    slug: "agent-trajectory",
+    title: "Agent trajectory critique",
+    tagline: "Grade the agent's path, not just its answer.",
+    estMinutes: 12,
+    level: "Advanced",
+    description:
+      "Pre-canned agent traces with seeded failure modes — redundant tool calls, wrong-tool selection, hallucinated observations. A trajectory judge scores tool selection, step efficiency, and grounding-in-trace with evidence pointing at specific step indices.",
+    learningObjectives: [
+      "Evaluate agents at the trajectory level, not only the final answer.",
+      "Distinguish failures of tool selection, efficiency, and grounding.",
+      "See how often a correct answer hides a broken trajectory (and vice versa).",
+    ],
+    requiresApiKey: true,
+  },
 ];
 
 export function getLab(slug: string): Lab | undefined {

@@ -4,6 +4,8 @@ import { LlmAsJudgeLab } from "@/components/labs/llm-as-judge";
 import { GroundednessLab } from "@/components/labs/groundedness-checker";
 import { RubricBuilderLab } from "@/components/labs/rubric-builder";
 import { PromptInjectionLab } from "@/components/labs/prompt-injection";
+import { PairwiseBiasLab } from "@/components/labs/pairwise-bias";
+import { AgentTrajectoryLab } from "@/components/labs/agent-trajectory";
 import { labs, getLab } from "@/content/labs";
 
 export function generateStaticParams() {
@@ -36,6 +38,8 @@ export default async function LabPage({
       {slug === "groundedness-checker" && <GroundednessLab />}
       {slug === "rubric-builder" && <RubricBuilderLab />}
       {slug === "prompt-injection-lab" && <PromptInjectionLab />}
+      {slug === "pairwise-bias" && <PairwiseBiasLab />}
+      {slug === "agent-trajectory" && <AgentTrajectoryLab />}
     </LabShell>
   );
 }
