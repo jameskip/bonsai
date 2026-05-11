@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { BonsaiMark } from "@/components/ui/bonsai-mark";
 
 const links = [
   { href: "/curriculum", label: "Curriculum" },
@@ -33,7 +34,8 @@ export function SiteNav() {
   return (
     <header className="glass-nav sticky top-0 z-40 w-full">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="group flex items-center gap-3 min-w-0">
+        <Link href="/" className="group flex items-center gap-2 min-w-0">
+          <BonsaiMark className="h-7 w-7 shrink-0 transition-transform group-hover:-rotate-3" />
           <span className="text-lg font-semibold tracking-tight text-primary lowercase">
             bonsai
           </span>
