@@ -84,13 +84,23 @@ export function ApiKeyManager({ variant = "full" }: Props) {
           </div>
         ) : !apiKey || editing ? (
           <div>
-            <Label htmlFor="anthropic-key">
-              Paste your key (starts with{" "}
-              <code className="text-foreground bg-muted rounded px-1">
-                sk-ant-
-              </code>
-              )
-            </Label>
+            <div className="flex items-baseline justify-between gap-2 flex-wrap">
+              <Label htmlFor="anthropic-key">
+                Paste your key (starts with{" "}
+                <code className="text-foreground bg-muted rounded px-1">
+                  sk-ant-
+                </code>
+                )
+              </Label>
+              <a
+                href="https://console.anthropic.com/settings/keys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-primary hover:underline"
+              >
+                Generate one in the Anthropic Console →
+              </a>
+            </div>
             <div className="mt-1 flex flex-wrap gap-2">
               <Input
                 id="anthropic-key"
@@ -251,7 +261,15 @@ function CompactStrip({
           </Button>
         </div>
         <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-          Saved to your browser only. Not logged server-side.
+          Saved to your browser only. Not logged server-side. Need a key?{" "}
+          <a
+            href="https://console.anthropic.com/settings/keys"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Generate one in the Anthropic Console →
+          </a>
         </p>
       </div>
     );
