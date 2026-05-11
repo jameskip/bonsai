@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Bonsai · Cultivate AI you can trust";
+export const alt = "bonsai — Cultivate AI you can trust";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -72,44 +72,36 @@ export default function OpengraphImage() {
             gap: 18,
           }}
         >
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 12,
-              background: primary,
-              color: bg,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 32,
-              fontWeight: 800,
-              letterSpacing: -1,
-            }}
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 40 40"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            B
-          </div>
+            <ellipse cx="24" cy="6.5" rx="3.5" ry="3" fill="#d4a373" />
+            <ellipse cx="11" cy="13" rx="6" ry="5" fill="#d4a373" opacity="0.92" />
+            <ellipse cx="22" cy="11" rx="9" ry="6" fill="#d4a373" />
+            <ellipse cx="32" cy="14" rx="5" ry="4" fill="#d4a373" opacity="0.9" />
+            <ellipse cx="18" cy="16" rx="6.5" ry="3.5" fill="#d4a373" opacity="0.95" />
+            <path
+              d="M21 17.5 C 18.5 21.5, 23 24.5, 20 28.5"
+              stroke="#6b4f3b"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <rect x="10" y="28" width="20" height="2.5" rx="1.1" fill="#6b4f3b" />
+            <path d="M12 30.5 L28 30.5 L26 36 L14 36 Z" fill="#6b4f3b" opacity="0.85" />
+          </svg>
           <div
             style={{
-              fontSize: 30,
+              fontSize: 34,
               fontWeight: 600,
               letterSpacing: -0.5,
-              color: foreground,
+              color: primary,
             }}
           >
-            Bonsai
-          </div>
-          <div
-            style={{
-              fontSize: 18,
-              color: muted,
-              border: `1px solid ${border}`,
-              borderRadius: 999,
-              padding: "6px 14px",
-              marginLeft: 6,
-            }}
-          >
-            Cultivate AI you can trust
+            bonsai
           </div>
         </div>
 
@@ -126,17 +118,16 @@ export default function OpengraphImage() {
         >
           <div
             style={{
-              fontSize: 88,
+              fontSize: 104,
               fontWeight: 600,
-              letterSpacing: -2,
+              letterSpacing: -2.5,
               lineHeight: 1.02,
               color: foreground,
               display: "flex",
               flexDirection: "column",
             }}
           >
-            <div style={{ display: "flex" }}>Quality assurance,</div>
-            <div style={{ display: "flex" }}>for systems that</div>
+            <div style={{ display: "flex" }}>Cultivate AI</div>
             <div
               style={{
                 display: "flex",
@@ -146,7 +137,7 @@ export default function OpengraphImage() {
                 color: "transparent",
               }}
             >
-              don&apos;t repeat themselves.
+              you can trust.
             </div>
           </div>
 
@@ -155,12 +146,13 @@ export default function OpengraphImage() {
               fontSize: 26,
               color: muted,
               lineHeight: 1.4,
-              maxWidth: 920,
+              maxWidth: 960,
               display: "flex",
             }}
           >
-            Evals, LLM-as-judge, RAG and agent harnesses, red-teaming, drift,
-            and CI/CD that respects statistical noise.
+            AI systems don&apos;t pass or fail — they perform within distributions.
+            Measure them, calibrate the judges, and prune releases on signal you
+            can defend.
           </div>
         </div>
 
@@ -184,8 +176,8 @@ export default function OpengraphImage() {
             <span style={{ display: "flex", color: border }}>·</span>
             <span style={{ display: "flex" }}>Quizzes</span>
           </div>
-          <div style={{ display: "flex", color: primary, fontWeight: 600 }}>
-            bonsai
+          <div style={{ display: "flex", color: primary, fontWeight: 600, fontStyle: "italic" }}>
+            Read, run, design, defend.
           </div>
         </div>
       </div>

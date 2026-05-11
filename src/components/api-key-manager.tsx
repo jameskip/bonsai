@@ -94,13 +94,27 @@ export function ApiKeyManager({ variant = "full" }: Props) {
             <div className="mt-1 flex flex-wrap gap-2">
               <Input
                 id="anthropic-key"
-                type={showKey ? "text" : "password"}
+                type="text"
                 autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
                 spellCheck={false}
+                data-1p-ignore="true"
+                data-lpignore="true"
+                data-bwignore="true"
+                data-form-type="other"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 placeholder="sk-ant-…"
                 className="font-mono flex-1 min-w-[16rem]"
+                style={
+                  !showKey
+                    ? ({
+                        WebkitTextSecurity: "disc",
+                        textSecurity: "disc",
+                      } as React.CSSProperties)
+                    : undefined
+                }
               />
               <Button
                 type="button"
@@ -202,13 +216,27 @@ function CompactStrip({
         </div>
         <div className="flex flex-wrap gap-2">
           <Input
-            type={showKey ? "text" : "password"}
+            type="text"
             autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
             spellCheck={false}
+            data-1p-ignore="true"
+            data-lpignore="true"
+            data-bwignore="true"
+            data-form-type="other"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="sk-ant-…"
             className="font-mono flex-1 min-w-[14rem]"
+            style={
+              !showKey
+                ? ({
+                    WebkitTextSecurity: "disc",
+                    textSecurity: "disc",
+                  } as React.CSSProperties)
+                : undefined
+            }
           />
           <Button
             type="button"
