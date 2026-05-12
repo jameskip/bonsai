@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #08090b;
+  --color-background: #000000;
   --color-foreground: #ededf0;
-  --color-muted: #15171b;
+  --color-muted: #0e1014;
   --color-muted-foreground: #9aa1ac;
-  --color-card: #0d0f12;
+  --color-card: #07080a;
   --color-card-foreground: #ededf0;
-  --color-border: #1c1f25;
-  --color-input: #1c1f25;
+  --color-border: #181b21;
+  --color-input: #181b21;
   --color-ring: #c98a48;
   --color-primary: #d4a373;
   --color-primary-foreground: #08090b;
@@ -147,8 +147,8 @@ button:disabled {
 
 .grid-bg {
   background-image:
-    linear-gradient(to right, rgba(212, 163, 115, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(212, 163, 115, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(212, 163, 115, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 163, 115, 0.025) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
