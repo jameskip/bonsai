@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { AmbientPrism } from "@/components/ambient-prism";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -73,7 +74,8 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col isolate">
+        <AmbientPrism />
         <SiteNav />
         <main className="flex-1">{children}</main>
         <SiteFooter />
