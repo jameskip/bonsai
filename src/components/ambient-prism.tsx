@@ -39,7 +39,7 @@ export function AmbientPrism() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      className="pointer-events-none absolute inset-x-0 top-0 h-screen -z-10 overflow-hidden"
     >
       <svg
         className="absolute inset-0 h-full w-full"
