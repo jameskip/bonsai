@@ -3,9 +3,9 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-const FOLIAGE = "#d4a373";
+const FOLIAGE = "#7dd3a3";
 const WOOD = "#6b4f3b";
-const BG = "#08090b";
+const BG = "#000000";
 
 export default function Icon() {
   return new ImageResponse(

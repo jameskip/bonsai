@@ -5,7 +5,7 @@ type Props = {
   title?: string;
 };
 
-const FOLIAGE = "#d4a373";
+const FOLIAGE = "#7dd3a3";
 const WOOD = "#6b4f3b";
 
 export function BonsaiMark({ className, title }: Props) {

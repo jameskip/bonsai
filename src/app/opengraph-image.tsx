@@ -5,12 +5,12 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OpengraphImage() {
-  const bg = "#08090b";
+  const bg = "#000000";
   const foreground = "#ededf0";
   const muted = "#9aa1ac";
-  const primary = "#d4a373";
+  const primary = "#7dd3a3";
   const border = "rgba(255, 255, 255, 0.08)";
-  const gridLine = "rgba(212, 163, 115, 0.07)";
+  const gridLine = "rgba(125, 211, 163, 0.07)";
 
   return new ImageResponse(
     (
@@ -78,11 +78,11 @@ export default function OpengraphImage() {
             viewBox="0 0 40 40"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <ellipse cx="24" cy="6.5" rx="3.5" ry="3" fill="#d4a373" />
-            <ellipse cx="11" cy="13" rx="6" ry="5" fill="#d4a373" opacity="0.92" />
-            <ellipse cx="22" cy="11" rx="9" ry="6" fill="#d4a373" />
-            <ellipse cx="32" cy="14" rx="5" ry="4" fill="#d4a373" opacity="0.9" />
-            <ellipse cx="18" cy="16" rx="6.5" ry="3.5" fill="#d4a373" opacity="0.95" />
+            <ellipse cx="24" cy="6.5" rx="3.5" ry="3" fill="#7dd3a3" />
+            <ellipse cx="11" cy="13" rx="6" ry="5" fill="#7dd3a3" opacity="0.92" />
+            <ellipse cx="22" cy="11" rx="9" ry="6" fill="#7dd3a3" />
+            <ellipse cx="32" cy="14" rx="5" ry="4" fill="#7dd3a3" opacity="0.9" />
+            <ellipse cx="18" cy="16" rx="6.5" ry="3.5" fill="#7dd3a3" opacity="0.95" />
             <path
               d="M21 17.5 C 18.5 21.5, 23 24.5, 20 28.5"
               stroke="#6b4f3b"
@@ -132,7 +132,7 @@ export default function OpengraphImage() {
               style={{
                 display: "flex",
                 backgroundImage:
-                  "linear-gradient(135deg, #d4a373 0%, #b08968 50%, #f4a261 100%)",
+                  "linear-gradient(135deg, #7dd3a3 0%, #4ade80 50%, #5eead4 100%)",
                 backgroundClip: "text",
                 color: "transparent",
               }}
