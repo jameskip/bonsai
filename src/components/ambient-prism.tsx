@@ -10,89 +10,88 @@ export function AmbientPrism() {
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
-          {/* Hot core — warm white blowing out to amber. Runs along the arc. */}
-          <linearGradient id="prism-core" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#ffb24a" stopOpacity="0" />
-            <stop offset="22%" stopColor="#ff8c2a" stopOpacity="0.85" />
-            <stop offset="48%" stopColor="#fff1c4" stopOpacity="1" />
-            <stop offset="72%" stopColor="#ffa84a" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#ff3b00" stopOpacity="0" />
+          {/* Warm body — along the path: red → orange → pure white → orange → red.
+              This is the hot blade of light. Pure #ffffff in the middle, no cream. */}
+          <linearGradient id="prism-warm" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stopColor="#ff1a00" stopOpacity="0" />
+            <stop offset="8%" stopColor="#ff1a00" />
+            <stop offset="22%" stopColor="#ff7a14" />
+            <stop offset="38%" stopColor="#ffd23a" />
+            <stop offset="50%" stopColor="#ffffff" />
+            <stop offset="62%" stopColor="#ffd23a" />
+            <stop offset="78%" stopColor="#ff7a14" />
+            <stop offset="92%" stopColor="#ff1a00" />
+            <stop offset="100%" stopColor="#ff1a00" stopOpacity="0" />
           </linearGradient>
 
-          {/* Tight saturated rainbow — sits along the arc as the prismatic edge */}
-          <linearGradient id="prism-edge" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#af52de" stopOpacity="0" />
-            <stop offset="8%" stopColor="#af52de" />
-            <stop offset="22%" stopColor="#5856d6" />
-            <stop offset="36%" stopColor="#5ac8fa" />
-            <stop offset="50%" stopColor="#34c759" />
-            <stop offset="62%" stopColor="#ffcc00" />
-            <stop offset="76%" stopColor="#ff9500" />
-            <stop offset="90%" stopColor="#ff3b30" />
-            <stop offset="100%" stopColor="#ff3b30" stopOpacity="0" />
+          {/* Chromatic razor — full saturated spectrum running along the offset path.
+              Real prism dispersion order: long wavelengths bend least (warm at the
+              ends, cool at the center where bending is sharpest). */}
+          <linearGradient id="prism-rainbow" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stopColor="#ff1a00" stopOpacity="0" />
+            <stop offset="5%" stopColor="#ff1a00" />
+            <stop offset="13%" stopColor="#ff7a14" />
+            <stop offset="22%" stopColor="#ffd23a" />
+            <stop offset="32%" stopColor="#7dff2a" />
+            <stop offset="42%" stopColor="#00ff9c" />
+            <stop offset="50%" stopColor="#00d4ff" />
+            <stop offset="58%" stopColor="#0066ff" />
+            <stop offset="66%" stopColor="#3a14ff" />
+            <stop offset="76%" stopColor="#c800ff" />
+            <stop offset="86%" stopColor="#ff0066" />
+            <stop offset="95%" stopColor="#ff1a00" />
+            <stop offset="100%" stopColor="#ff1a00" stopOpacity="0" />
           </linearGradient>
 
+          {/* Heavy bloom on the warm body for the soft halo. */}
           <filter
-            id="prism-bloom-core"
-            x="-20%"
-            y="-20%"
-            width="140%"
-            height="140%"
+            id="warm-bloom"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%"
+            colorInterpolationFilters="sRGB"
           >
-            <feGaussianBlur stdDeviation="55" />
+            <feGaussianBlur stdDeviation="38" />
           </filter>
+
+          {/* Razor-thin blur for the rainbow — keeps the spectrum bands distinct. */}
           <filter
-            id="prism-bloom-edge"
+            id="rainbow-razor"
             x="-20%"
             y="-20%"
             width="140%"
             height="140%"
+            colorInterpolationFilters="sRGB"
           >
-            <feGaussianBlur stdDeviation="6" />
+            <feGaussianBlur stdDeviation="2.5" />
           </filter>
         </defs>
 
-        {/* Screen-blend keeps blacks pure; only the colored bits glow. */}
+        {/* Screen blend keeps blacks pure; the streak adds light over void. */}
         <g style={{ mixBlendMode: "screen" }}>
-          {/* Primary arc — anchored top-right, sweeps down off the right edge.
-              Footprint stays in the right ~45% of the viewport. */}
+          {/* Warm body — bows to the upper right, sweeps from top edge to bottom edge.
+              Stays in the right ~35% of the viewport. */}
           <path
-            d="M 980,-260 Q 1760,260 2220,1100"
-            stroke="url(#prism-core)"
-            strokeWidth="360"
+            d="M 1180,-80 Q 1980,420 1880,1180"
+            stroke="url(#prism-warm)"
+            strokeWidth="340"
             strokeLinecap="round"
             fill="none"
-            filter="url(#prism-bloom-core)"
-            opacity="0.7"
-          />
-          <path
-            d="M 980,-260 Q 1760,260 2220,1100"
-            stroke="url(#prism-edge)"
-            strokeWidth="46"
-            strokeLinecap="round"
-            fill="none"
-            filter="url(#prism-bloom-edge)"
-            opacity="0.85"
+            filter="url(#warm-bloom)"
+            opacity="0.95"
           />
 
-          {/* Echo arc — small, bottom-left, lower-intensity reflection. */}
+          {/* Rainbow razor — same shape, offset ~70px to the inside (concave side,
+              i.e. lower-left of the curve). Tighter stroke, minimal blur. */}
           <path
-            d="M -180,1020 Q 240,840 760,1060"
-            stroke="url(#prism-core)"
-            strokeWidth="170"
+            d="M 1110,-50 Q 1900,440 1810,1180"
+            stroke="url(#prism-rainbow)"
+            strokeWidth="44"
             strokeLinecap="round"
             fill="none"
-            filter="url(#prism-bloom-core)"
-            opacity="0.45"
-          />
-          <path
-            d="M -180,1020 Q 240,840 760,1060"
-            stroke="url(#prism-edge)"
-            strokeWidth="22"
-            strokeLinecap="round"
-            fill="none"
-            filter="url(#prism-bloom-edge)"
-            opacity="0.7"
+            filter="url(#rainbow-razor)"
+            opacity="1"
           />
         </g>
       </svg>
