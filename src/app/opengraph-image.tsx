@@ -36,32 +36,33 @@ export default function OpengraphImage() {
             display: "flex",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            top: -260,
-            right: -180,
-            width: 720,
-            height: 720,
-            borderRadius: 720,
-            background:
-              "radial-gradient(circle at center, rgba(244, 162, 97, 0.32), rgba(244, 162, 97, 0) 65%)",
-            display: "flex",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -280,
-            left: -160,
-            width: 680,
-            height: 680,
-            borderRadius: 680,
-            background:
-              "radial-gradient(circle at center, rgba(176, 137, 104, 0.28), rgba(176, 137, 104, 0) 65%)",
-            display: "flex",
-          }}
-        />
+        {/* Prism streak — 8 stacked radial gradients along a diagonal on the
+            right side, mirroring the AmbientPrism on the live site. Cool
+            wavelengths up top, white-hot core in the middle, warm tail below. */}
+        {[
+          { rgb: "122, 20, 255", x: 970, y: 30, size: 260, opacity: 0.55 },
+          { rgb: "32, 80, 255", x: 1000, y: 100, size: 260, opacity: 0.65 },
+          { rgb: "0, 184, 255", x: 1035, y: 175, size: 280, opacity: 0.78 },
+          { rgb: "0, 255, 168", x: 1075, y: 245, size: 280, opacity: 0.72 },
+          { rgb: "255, 255, 255", x: 1115, y: 310, size: 340, opacity: 0.9 },
+          { rgb: "255, 210, 58", x: 1145, y: 380, size: 280, opacity: 0.85 },
+          { rgb: "255, 142, 26", x: 1175, y: 455, size: 300, opacity: 0.75 },
+          { rgb: "255, 34, 0", x: 1205, y: 540, size: 340, opacity: 0.55 },
+        ].map((o, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: o.x - o.size / 2,
+              top: o.y - o.size / 2,
+              width: o.size,
+              height: o.size,
+              borderRadius: o.size,
+              background: `radial-gradient(circle at center, rgba(${o.rgb}, ${o.opacity}), rgba(${o.rgb}, 0) 70%)`,
+              display: "flex",
+            }}
+          />
+        ))}
 
         <div
           style={{

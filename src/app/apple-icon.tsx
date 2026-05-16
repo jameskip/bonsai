@@ -21,19 +21,27 @@ export default function AppleIcon() {
           position: "relative",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: -90,
-            right: -60,
-            width: 220,
-            height: 220,
-            borderRadius: 220,
-            background:
-              "radial-gradient(circle at center, rgba(244, 162, 97, 0.32), rgba(244, 162, 97, 0) 65%)",
-            display: "flex",
-          }}
-        />
+        {/* Small prism halo in the upper-right corner — hints at the streak
+            without dominating the bonsai mark. */}
+        {[
+          { rgb: "0, 184, 255", x: 145, y: 18, size: 100, opacity: 0.5 },
+          { rgb: "255, 255, 255", x: 160, y: 38, size: 120, opacity: 0.7 },
+          { rgb: "255, 142, 26", x: 175, y: 64, size: 110, opacity: 0.55 },
+        ].map((o, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: o.x - o.size / 2,
+              top: o.y - o.size / 2,
+              width: o.size,
+              height: o.size,
+              borderRadius: o.size,
+              background: `radial-gradient(circle at center, rgba(${o.rgb}, ${o.opacity}), rgba(${o.rgb}, 0) 70%)`,
+              display: "flex",
+            }}
+          />
+        ))}
         <svg
           width="132"
           height="132"
