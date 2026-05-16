@@ -38,7 +38,7 @@ export function SiteNav() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="group flex items-center gap-2 min-w-0">
           <BonsaiMark className="h-7 w-7 shrink-0 transition-transform group-hover:-rotate-3" />
-          <span className="text-lg font-semibold tracking-tight text-primary lowercase">
+          <span className="gradient-text text-lg font-semibold tracking-tight lowercase">
             bonsai
           </span>
           <span className="hidden md:inline text-xs text-muted-foreground border border-border rounded-full px-2 py-0.5">
