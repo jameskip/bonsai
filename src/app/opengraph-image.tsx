@@ -133,7 +133,7 @@ export default function OpengraphImage() {
               style={{
                 display: "flex",
                 backgroundImage:
-                  "linear-gradient(135deg, #7dd3a3 0%, #4ade80 50%, #5eead4 100%)",
+                  "linear-gradient(90deg, #a855f7 0%, #3b82f6 18%, #06b6d4 34%, #10b981 50%, #facc15 68%, #f97316 84%, #ef4444 100%)",
                 backgroundClip: "text",
                 color: "transparent",
               }}
