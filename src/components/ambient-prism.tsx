@@ -39,7 +39,13 @@ export function AmbientPrism() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-0 h-screen -z-10 overflow-hidden"
+      className="pointer-events-none absolute inset-x-0 top-0 h-[120vh] -z-10 overflow-hidden"
+      style={{
+        maskImage:
+          "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+      }}
     >
       <svg
         className="absolute inset-0 h-full w-full"
