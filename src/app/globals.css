@@ -141,13 +141,13 @@ button:disabled {
 .gradient-text {
   background: linear-gradient(
     90deg,
-    #a855f7 0%,
-    #3b82f6 18%,
-    #06b6d4 34%,
-    #10b981 50%,
-    #facc15 68%,
-    #f97316 84%,
-    #ef4444 100%
+    #9d7ec7 0%,
+    #7b95c4 18%,
+    #6ba6b2 34%,
+    #7aa890 50%,
+    #c7b87a 68%,
+    #c79478 84%,
+    #b87878 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
